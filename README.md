@@ -6,16 +6,22 @@ From the [official site][diceware]:
 
 > Diceware™ is a method for picking passphrases that uses dice to select words at random from a special list called the Diceware Word List.
 
-## Usage
+## Installation
 
-    Command | Description
-    ------------ | -------------
-    generate | Generate a passphrase using the Diceware method.
+`go get github.com/btoll/diceware-go`
+
+## CLI Usage
 
     Option | Description
     ------------ | -------------
     -words | The length of the passphrase (defaults to six words).
     -h, --help | Display help.
+
+## Scripting Usage
+
+    Command | Description
+    ------------ | -------------
+    generate(n) | Generates a passphrase of length `n` using the Diceware method.
 
 ## Ports
 
