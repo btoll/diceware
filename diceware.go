@@ -58,5 +58,5 @@ func Generate(n int) string {
 	}
 
 	passphrase := []string{getWord()}
-	return strings.Join(append(passphrase, GetPassphrase(n-1)), " ")
+	return strings.Join(append(passphrase, Generate(n-1)), " ")
 }

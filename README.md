@@ -8,7 +8,7 @@ From the [official site][diceware]:
 
 ## Installation
 
-`go get github.com/btoll/diceware-go`
+`go get github.com/btoll/diceware`
 
 ## CLI Usage
 
@@ -21,7 +21,7 @@ From the [official site][diceware]:
 
     Command | Description
     ------------ | -------------
-    generate(n) | Generates a passphrase of length `n` using the Diceware method.
+    generate(n) | Generates a passphrase of word length `n` using the Diceware method.
 
 ## Ports
 

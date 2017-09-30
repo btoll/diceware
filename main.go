@@ -1,10 +1,8 @@
-package main
+package diceware
 
 import (
 	"flag"
 	"fmt"
-
-	diceware "github.com/btoll/diceware-go/diceware"
 )
 
 func main() {
@@ -15,5 +13,5 @@ func main() {
 		panic("Value must be between 1 and 500")
 	}
 
-	fmt.Println(diceware.Generate(*words))
+	fmt.Println(Generate(*words))
 }
