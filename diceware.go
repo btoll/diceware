@@ -1,12 +1,3 @@
-/*
-Package diceware generates a cryptographically-secure Diceware passphrase
- using the underlying architecture's CSPRNG.
-
-CLI arguments:
-
-    words:
-        The length of the passphrase (in words).
-*/
 package main
 
 import (
@@ -52,11 +43,11 @@ func getWord() string {
 }
 
 // Generate generates a cryptographically-secure Diceware passphrase.
-func Generate(n int) string {
+func Generate(n int, delimiter string) string {
 	if n < 1 {
 		return ""
 	}
 
 	passphrase := []string{getWord()}
-	return strings.Join(append(passphrase, Generate(n-1)), " ")
+	return strings.TrimRight(strings.Join(append(passphrase, Generate(n-1, delimiter)), delimiter), delimiter)
 }

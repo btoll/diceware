@@ -8,15 +8,40 @@ From the [official site][diceware]:
 
 This project is now using the [new word list] from the [EFF], which contain many improvements over the original Diceware word list.
 
+## Examples
+
+```
+$ diceware
+regulatorvotinggauntlettreadingwidenuntried
+```
+
+```
+$ diceware -delimiter " "
+cozily troubling flask trapezoid waving throwback
+```
+
+```
+$ diceware -delimiter "-"
+ablaze-marmalade-axis-appetite-skyward-enigmatic
+```
+
+```
+$ diceware -words 10 -delimiter "-"
+that-giddily-repressed-setback-musty-predict-recede-bagging-pointer-uncurled
+```
+
 ## Installation
 
-`go get github.com/btoll/diceware`
+```
+go install github.com/btoll/diceware@latest
+```
 
 ## CLI Usage
 
     Option | Description
     ------------ | -------------
     -words | The length of the passphrase (defaults to six words).
+    -delimiter | The character that joins the words.
     -h, --help | Display help.
 
 ## Scripting Usage
