@@ -7,7 +7,7 @@ CLI arguments:
     words:
         The length of the passphrase (in words).
 */
-package diceware
+package main
 
 import (
 	"crypto/rand"

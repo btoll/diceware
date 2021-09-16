@@ -1,4 +1,4 @@
-package diceware
+package main
 
 var Words = map[string]string{
 	"11111": "abacus",

@@ -1,4 +1,4 @@
-package diceware
+package main
 
 import (
 	"flag"
