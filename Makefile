@@ -1,12 +1,16 @@
-PREFIX=/usr
+CC      	= go
+TARGET		= diceware
+PREFIX		= /usr
 
-build: diceware
+.PHONY: build clean install
 
-diceware:
-	go build
+build: $(TARGET)
+
+$(TARGET):
+	$(CC) build
 
 clean:
-	rm -f diceware
+	rm -f $(TARGET)
 
 # https://www.gnu.org/software/make/manual/html_node/DESTDIR.html
 install:
