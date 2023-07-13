@@ -2,7 +2,8 @@ Source: diceware
 Section: utils
 Priority: optional
 Maintainer: Benjamin Toll <ben@benjamintoll.com>
-Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+#Build-Depends: debhelper-compat (= 13), dh-golang, golang-any
+Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.5.1
 Homepage: https://benjamintoll.com
 #Vcs-Browser: https://salsa.debian.org/debian/diceware
