@@ -1,19 +1,23 @@
 CC      	= go
-TARGET		= diceware
-PREFIX		= /usr
+PROGRAM		= diceware
+prefix		= /usr
 
-.PHONY: build clean install
+.PHONY: build clean distclean install uninstall
 
-build: $(TARGET)
+build: $(PROGRAM)
 
-$(TARGET):
+$(PROGRAM):
 	$(CC) build
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(PROGRAM)
+
+distclean: clean
 
 # https://www.gnu.org/software/make/manual/html_node/DESTDIR.html
 install:
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	install -m 0755 diceware $(DESTDIR)$(PREFIX)/bin/
+	install -D -m 0755 $(PROGRAM) $(DESTDIR)$(prefix)/bin/$(PROGRAM)
+
+uninstall:
+	-rm -f $(DESTDIR)$(prefix)/bin/$(PROGRAM)
 
