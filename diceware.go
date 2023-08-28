@@ -1,4 +1,4 @@
-package main
+package diceware
 
 import (
 	"crypto/rand"
