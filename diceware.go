@@ -2,14 +2,17 @@ package diceware
 
 import (
 	"crypto/rand"
+	"fmt"
 	"math/big"
+	"os"
 	"strconv"
 	"strings"
 )
 
 func check(err error) {
 	if err != nil {
-		panic(err)
+		fmt.Fprint(os.Stderr, err)
+		os.Exit(1)
 	}
 }
 
