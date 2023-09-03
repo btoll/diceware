@@ -2,35 +2,29 @@ package diceware
 
 import (
 	"crypto/rand"
-	"fmt"
 	"math/big"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func check(err error) {
-	if err != nil {
-		fmt.Fprint(os.Stderr, err)
-		os.Exit(1)
-	}
-}
-
-func getKey(n uint) string {
+func getKey(n uint) (string, error) {
 	if n < 1 {
-		return ""
+		return "", nil
 	}
-
 	// Get ints from CSPRNG.
 	num, err := rand.Int(rand.Reader, big.NewInt(6))
-	check(err)
+	if err != nil {
+		return "", err
+	}
 
 	// Need to add 1 so that the random num is between
 	// 1 - 6 (inclusive).
 
 	// Convert *big.Int -> string -> integer.
 	i, err := strconv.Atoi(num.String())
-	check(err)
+	if err != nil {
+		return "", err
+	}
 
 	// Add 1 to get 1 - 6 inclusive.
 	i += 1
@@ -38,19 +32,35 @@ func getKey(n uint) string {
 	// Convert int back to string.
 	key := []string{strconv.Itoa(i)}
 
-	return strings.Join(append(key, getKey(n-1)), "")
+	word, err := getKey(n - 1)
+	if err != nil {
+		return "", err
+	}
+	return strings.Join(append(key, word), ""), nil
 }
 
-func getWord() string {
-	return Words[getKey(5)]
+func getWord() (string, error) {
+	word, err := getKey(5)
+	if err != nil {
+		return "", err
+	}
+	return Words[word], nil
 }
 
 // Generate generates a cryptographically-secure Diceware passphrase.
-func Generate(n int, delimiter string) string {
+func Generate(n int, delimiter string) (string, error) {
 	if n < 1 {
-		return ""
+		return "", nil
 	}
 
-	passphrase := []string{getWord()}
-	return strings.TrimRight(strings.Join(append(passphrase, Generate(n-1, delimiter)), delimiter), delimiter)
+	word, err := getWord()
+	if err != nil {
+		return "", err
+	}
+	passphrase := []string{word}
+	word, err = Generate(n-1, delimiter)
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimRight(strings.Join(append(passphrase, word), delimiter), delimiter), nil
 }
